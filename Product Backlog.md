@@ -30,6 +30,15 @@ ___
 | 1|   Application must use a database for storage
 | 1|   Application must be version controlled using Git and publicly accessible on GitHub|
 | 1|   Application must be deployable as a Docker container|
+| 1|   Create a reporting on population information. Design and implement a new system to allow easy access to the population information|
+| 1|   Prioritising the requirements (if applicable)|
+| 1|   Task allocation|
+| 1|   Identifying the stakeholders|
+| 1|  Risk management|
+
+
+
+
 
 
 
