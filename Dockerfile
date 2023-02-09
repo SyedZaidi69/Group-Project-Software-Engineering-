@@ -1,5 +1,5 @@
-FROM Node.js:16.14.2
+FROM node.js:16.14.2
 COPY . /SE Group Project/
-EXPOSE 80
+EXPOSE 3000
 LABEL MAINTAINER "Emil Runcan <runcane@roehampton.ac.uk"
-WORKDIR /Group-Project-Software-Engineering-
+RUN main.html
