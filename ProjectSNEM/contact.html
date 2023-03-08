@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=fire-animation">
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <a href="index.html"><img src="images/logo.png" class="logo"></a>
+            <div class="search">
+            <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Search for something">
+            </div>
+            <ul class="menu-buttons">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="data.html">Data</a>
+                <div class="dropdown-content">
+                    <a href="underconstruction.html">Continents</a>
+                    <a href="underconstruction.html">Countries</a>
+                    <a href="underconstruction.html">Cities</a>
+                    <a href="underconstruction.html">Languages</a>
+                </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <img src="images/user.png" class="user-pic" onclick="toggleMenu()">
+        
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="images/user.png">
+                        <h3>Emil Runcan</h3>
+                    </div>
+                    <hr>
+
+                    <a href="#" class="sub-menu-link">
+                        <img src="images/profile.png">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="images/settings.png">
+                        <p>Settings & Privacy</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="images/help.png">
+                        <p>Help & Support</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="images/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="message">
+            Hello World!
+        </div>
+    
+    </div>
+    
+<script>
+    let subMenu = document.getElementById("subMenu");
+
+function toggleMenu(){
+     subMenu.classList.toggle("open-menu");
+ }
+</script>
+
+</body>
+
+
+</html>
