@@ -1,0 +1,26 @@
+extends layout.pug
+block content            
+    header
+        title
+    div
+        select.dropdown(onchange='sortTable(this.value)')
+            option(value='name') Name
+            option(value='countrycode') Country Code
+            option(value='population') Population
+
+        select.dropdown(onchange='sortTableOrder(this.value)')
+            option(value='asc') Low to High
+            option(value='desc') High to Low
+
+        button(onclick='sortTable()') Sort
+
+    table
+      tr
+        th Name
+        th Country Code 
+        th Population
+      each city in cities
+        tr 
+          td #{city.name}
+          td #{city.countrycode}
+          td #{city.population}

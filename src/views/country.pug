@@ -1,0 +1,31 @@
+extends layout.pug
+block content            
+    header
+        title
+    div
+        select.dropdown(onchange='sortTable(this.value)')
+            option(value='name') Name
+            option(value='capital') Capital
+            option(value='continent') Continent
+            option(value='population') Population
+
+        select.dropdown(onchange='sortTableOrder(this.value)')
+            option(value='asc') Low to High
+            option(value='desc') High to Low
+
+        button(onclick='sortTable()') Sort
+
+    table
+      tr
+        th Code 
+        th Name
+        th Capital 
+        th Continent
+        th Population
+      each country in countries
+        tr 
+          td #{country.code}
+          td #{country.name}
+          td #{country.capital}
+          td #{country.continent}
+          td #{country.population}
