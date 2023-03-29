@@ -1,12 +1,17 @@
 version: 2.1
 orbs:
-  node : circleci/node@4.7.0
+  node: circleci/node@4.7.0
 jobs:
-  build :
-    working_directory : ~/Group-Project-Software-Engineering-/src
+  build:
+    working_directory: ~/Group-Project-Software-Engineering-/src
     docker:
-      - image : cimg/node:lts
+      - image: cimg/node:lts
     steps:
       - checkout:
           path: ~/Group-Project-Software-Engineering-
       - run: npm install
+      - run: 
+          name: "Run tests"
+          environment:
+            NODE_OPTIONS: --experimental-vm-modules
+          command: npm run test
