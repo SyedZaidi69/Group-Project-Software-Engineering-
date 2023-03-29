@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run: 
           name: "Prepare environment"
-          command: mv ./src/example.env.development ./src/.env.development && mv ./example.env ./.env
+          command: mv ./src/Test.env.development ./src/.env.development && mv ./Test.env ./.env
       - run: 
           name: "Start database"
           command: docker-compose run --service-ports database
