@@ -1,0 +1,29 @@
+extends layout.pug
+block content            
+    header
+        title
+    div
+        select.dropdown(onchange='sortTable(this.value)')
+            option(value='countrycode') Country Code
+            option(value='language') Language
+            option(value='isofficial') Official
+            option(value='percentage') Percentage
+
+        select.dropdown(onchange='sortTableOrder(this.value)')
+            option(value='asc') Low to High
+            option(value='desc') High to Low
+
+        button(onclick='sortTable()') Sort
+
+    table
+      tr
+        th Country Code 
+        th Language
+        th Official
+        th Percentage
+      each countrylanguage in languages
+        tr 
+          td #{countrylanguage.countrycode}
+          td #{countrylanguage.language}
+          td #{countrylanguage.isofficial}
+          td #{countrylanguage.percentage}
