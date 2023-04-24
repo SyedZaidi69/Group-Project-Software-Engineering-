@@ -65,14 +65,19 @@ app.get('/revcities', (req, res) => {
         });
     });
 });
-app.get('/citiesrep', (req, res) => {
-    res.render('citiesrep.pug', {
-        title: 'Reports Page'
+
+app.get('/languagesrep', (req, res) => {
+    db.execute("SELECT language, SUM(percentage) AS totalpercentage FROM countrylanguage GROUP BY language ORDER BY totalpercentage DESC", (err, result, fields) => {
+        res.render('languagesrep.pug', {
+            languages: result
+       });
     });
 });
-app.get('/languagesrep', (req, res) => {
-    res.render('languagesrep.pug', {
-        title: 'Reports Page'
+app.get('/revlanguages', (req, res) => {
+    db.execute("SELECT language, SUM(percentage) AS totalpercentage FROM countrylanguage GROUP BY language ORDER BY totalpercentage ASC", (err, result, fields) => {
+        res.render('revlanguages.pug', {
+            languages: result
+        });
     });
 });
 
