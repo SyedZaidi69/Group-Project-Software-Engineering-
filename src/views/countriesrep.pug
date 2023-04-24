@@ -1,0 +1,12 @@
+extends layout.pug 
+block content
+
+    table
+      tr
+        th Name 
+        th Population
+      
+      each country in countries
+        tr 
+          td #{country.name}
+          td #{country.population}

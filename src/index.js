@@ -31,14 +31,31 @@ app.get('/about', (req, res) => {
         title: 'About Page'
     });
 });
-app.get('/search', (req, res) => {
-    res.render('search.pug', {
-        title: 'FAQ Page'
+app.get('/reports', (req, res) => {
+    res.render('reports.pug', {
+        title: 'Reports Page'
+    });
+});
+app.get('/countriesrep', (req, res) => {
+    db.execute("SELECT name, population FROM country ORDER BY Population DESC", (err, result, fields) => {
+        res.render('countriesrep.pug', {
+            countries: result
+        });
+    });
+});
+app.get('/citiesrep', (req, res) => {
+    res.render('citiesrep.pug', {
+        title: 'Reports Page'
+    });
+});
+app.get('/languagesrep', (req, res) => {
+    res.render('languagesrep.pug', {
+        title: 'Reports Page'
     });
 });
 
 
-
+// getting and rendering all the data from city table
 app.get('/city', (req,res) => {
     db.execute("SELECT name, countrycode, population FROM city", (err, result, fields) => {
         console.log('/cities: ');
@@ -48,7 +65,7 @@ app.get('/city', (req,res) => {
         });
     })
 })
-
+// getting and rendering all the data from country table
 app.get('/country', (req,res) => {
     db.execute("SELECT code, name, capital, continent, population FROM country", (err, result, fields) => {
         console.log('/countries: ');
@@ -58,24 +75,7 @@ app.get('/country', (req,res) => {
         });
     })
 })
-
-
-app.get('/country/:sortBy/:order', (req,res) => {
-    let orderQuery = '';
-    if (req.params.order === 'asc') {
-      orderQuery = 'ASC';
-    } else if (req.params.order === 'desc') {
-      orderQuery = 'DESC';
-    }
-    db.execute(`SELECT code, name, capital, continent, population FROM country ORDER BY ${req.params.sortBy} ${orderQuery}`, (err, result, fields) => {
-      console.log('/countries: ');
-      res.render('country.pug', {
-        title: 'Countries',
-        countries: result
-      });
-    })
-  })
-
+// getting and rendering all the data from countrylanguage table
 app.get('/language', (req,res) => {
     db.execute("SELECT countrycode, language, isofficial, percentage FROM countrylanguage", (err, result, fields) => {
         console.log('/languages: ');
@@ -86,8 +86,16 @@ app.get('/language', (req,res) => {
     })
 })
 
+app.get('/citiesrep', (req,res) => {
+    db.execute("SELECT name, population FROM city ORDER BY population DESC", (err, result, fields) => {
+        res.render('citiesrep.pug', {
+            title: 'CitiesReport',
+            cities: result
+        });
+    })
+})
 
-//module.exports={app, db}
+
 app.listen(8080, () => {
     console.log('Server is running on 8080');
 

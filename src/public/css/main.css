@@ -6,7 +6,7 @@
 }
 
 nav {
-    background: #000;
+    background: #031e29;
     padding: 30px;
 }
 .logo {
@@ -74,7 +74,7 @@ li a:hover {
 }
 
 .header img {
-    background: rgb(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .cards {
@@ -100,7 +100,7 @@ li a:hover {
 
 .card h1 {
     position:absolute;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     margin: 20px;
     top: 0;
@@ -110,7 +110,6 @@ li a:hover {
 .cardsTitle {
     text-align: center;
     padding: 40px;
-    background: rgb(170, 167, 167);
     font-size: 30px;
     margin-bottom: 40px;
     color: #fff;
@@ -223,46 +222,3 @@ button:hover {
 }
 
 
-
-#search-box input[type="text"] {
-    width: 400px;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-#search-box input[type="submit"] {
-    width: 100px;
-    height: 30px;
-    font-size: 14px;
-    background-color: #000;
-    color: #fff;
-}
-
-#links li {
-    display: inline-block;
-    padding: 0 10px;
-}
-
-#header {
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-}
-
-#search-box {
-    text-align: center;
-    margin-top: 10px;
-}
-
-#links {
-    margin-top: 10px;
-    text-align: center;
-}
-
-#sign-in {
-    margin-top: 10px;
-    text-align: center;
-}
