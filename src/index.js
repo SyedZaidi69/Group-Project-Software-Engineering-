@@ -43,6 +43,28 @@ app.get('/countriesrep', (req, res) => {
         });
     });
 });
+app.get('/revcountries', (req, res) => {
+    db.execute("SELECT name, population FROM country ORDER BY Population ASC", (err, result, fields) => {
+        res.render('revcountries.pug', {
+            countries: result
+        });
+    });
+});
+
+app.get('/citiesrep', (req, res) => {
+    db.execute("SELECT name, countrycode, population FROM city ORDER BY population DESC LIMIT 100", (err, result, fields) => {
+        res.render('citiesrep.pug', {
+            cities: result
+        });
+    });
+});
+app.get('/revcities', (req, res) => {
+    db.execute("SELECT name, countrycode, population FROM city ORDER BY population ASC LIMIT 100", (err, result, fields) => {
+        res.render('revcities.pug', {
+            cities: result
+        });
+    });
+});
 app.get('/citiesrep', (req, res) => {
     res.render('citiesrep.pug', {
         title: 'Reports Page'
