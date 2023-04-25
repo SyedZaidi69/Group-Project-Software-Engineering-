@@ -84,7 +84,7 @@ app.get('/revlanguages', (req, res) => {
 
 // getting and rendering all the data from city table
 app.get('/city', (req,res) => {
-    db.execute("SELECT name, countrycode, population FROM city", (err, result, fields) => {
+    db.execute("SELECT id, name, countrycode, district, population FROM city", (err, result, fields) => {
         console.log('/cities: ');
         res.render('city.pug', {
             title: 'Cities',
@@ -94,7 +94,7 @@ app.get('/city', (req,res) => {
 })
 // getting and rendering all the data from country table
 app.get('/country', (req,res) => {
-    db.execute("SELECT code, name, capital, continent, population FROM country", (err, result, fields) => {
+    db.execute("SELECT code, name, continent, region, surfacearea, indepyear, population, lifeexpectancy, localname, governmentform, headofstate FROM country", (err, result, fields) => {
         console.log('/countries: ');
         res.render('country.pug', {
             title: 'Countries',
