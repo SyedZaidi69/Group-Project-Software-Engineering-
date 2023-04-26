@@ -1,0 +1,29 @@
+extends layout.pug
+block content            
+    table
+      tr
+        th Code 
+        th Name
+        th Continent
+        th Region 
+        th Surface Area 
+        th Independence Year 
+        th Population
+        th Life Expectancy
+        th Local Name 
+        th Form of Government 
+        th Head of State 
+
+      each country in countries
+        tr 
+          td #{country.code}
+          td #{country.name}
+          td #{country.continent}
+          td #{country.region}
+          td #{country.surfacearea}
+          td #{country.indepyear}
+          td #{country.population}
+          td #{country.lifeexpectancy}
+          td #{country.localname}
+          td #{country.governmentform}
+          td #{country.headofstate}

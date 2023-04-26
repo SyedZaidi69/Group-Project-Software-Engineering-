@@ -1,0 +1,15 @@
+extends layout.pug
+block content            
+
+    table
+      tr
+        th Country Code 
+        th Language
+        th Official
+        th Percentage
+      each countrylanguage in languages
+        tr 
+          td #{countrylanguage.countrycode}
+          td #{countrylanguage.language}
+          td #{countrylanguage.isofficial}
+          td #{countrylanguage.percentage}

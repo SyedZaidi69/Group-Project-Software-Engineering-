@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  database: 
+    image: mysql
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=world
+    ports:
+      - 3306:3306
+  webserver:
+    depends_on:
+      - database
+    build: ./src
+    restart: on-failure
+    environment:
+      - DATABASE_HOST=database
+    ports:
+      - 8080:8080
+    

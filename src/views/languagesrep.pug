@@ -1,0 +1,14 @@
+extends layout.pug 
+block content
+
+    a.btn(href='/revlanguages') Reverse Order
+
+    table
+      tr
+        th Language 
+        th Percentage
+      
+      each countrylanguage in languages
+        tr 
+          td #{countrylanguage.language}
+          td #{countrylanguage.totalpercentage}

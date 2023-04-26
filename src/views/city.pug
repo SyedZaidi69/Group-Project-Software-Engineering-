@@ -1,0 +1,17 @@
+extends layout.pug
+block content            
+
+    table
+      tr
+        th ID 
+        th Name
+        th Country Code 
+        th District
+        th Population
+      each city in cities
+        tr 
+          td #{city.id}
+          td #{city.name}
+          td #{city.countrycode}
+          td #{city.district}
+          td #{city.population}
