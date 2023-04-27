@@ -149,7 +149,7 @@ app.get("/account", async (req, res) => {
   
     const sql = `SELECT id, email FROM user WHERE user.id = ${userId}`;
     const [results, cols] = await Promise.all([db.execute(sql)]);
-    const user = results[0];
+    const user = results[1];
   
     res.render("account", { user });
 });

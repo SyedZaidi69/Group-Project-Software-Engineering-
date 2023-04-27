@@ -36,8 +36,8 @@ CREATE TABLE `user` (
 --
 -- Dumping data for table `user`
 --
-INSERT INTO `user` VALUES (1,'emil@example.com','password');
-INSERT INTO `user` VALUES (2,'nowres@example.com','password');
+INSERT INTO `user` VALUES (1,'adam@example.com','password');
+INSERT INTO `user` VALUES (2,'tom@example.com','password');
 commit;
 
 --
