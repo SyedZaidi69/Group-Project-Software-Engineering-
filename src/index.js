@@ -98,7 +98,6 @@ app.get('/revlanguages', (req, res) => {
 // getting and rendering all the data from city table
 app.get('/city', (req,res) => {
     db.execute("SELECT id, name, countrycode, district, population FROM city", (err, result, fields) => {
-        console.log('/cities: ');
         res.render('city.pug', {
             title: 'Cities',
             cities: result
@@ -108,7 +107,6 @@ app.get('/city', (req,res) => {
 // getting and rendering all the data from country table
 app.get('/country', (req,res) => {
     db.execute("SELECT code, name, continent, region, surfacearea, indepyear, population, lifeexpectancy, localname, governmentform, headofstate FROM country", (err, result, fields) => {
-        console.log('/countries: ');
         res.render('country.pug', {
             title: 'Countries',
             countries: result
@@ -118,7 +116,6 @@ app.get('/country', (req,res) => {
 // getting and rendering all the data from countrylanguage table
 app.get('/language', (req,res) => {
     db.execute("SELECT countrycode, language, isofficial, percentage FROM countrylanguage", (err, result, fields) => {
-        console.log('/languages: ');
         res.render('language.pug', {
             title: 'Languages',
             languages: result
@@ -137,15 +134,13 @@ app.get('/citiesrep', (req,res) => {
 
 app.get("/register", (req, res) => {
     res.render("register");
-  });
-  
-  // Login
-  app.get("/login", (req, res) => {
+});
+
+app.get("/login", (req, res) => {
     res.render("login");
-  });
+});
   
-  // Account
-  app.get("/account", async (req, res) => {
+app.get("/account", async (req, res) => {
     const { auth, userId } = req.session;
   
     if (!auth) {
@@ -153,18 +148,18 @@ app.get("/register", (req, res) => {
     }
   
     const sql = `SELECT id, email FROM user WHERE user.id = ${userId}`;
-    const [results, cols] = await conn.execute(sql);
+    const [results, cols] = await Promise.all([db.execute(sql)]);
     const user = results[0];
   
     res.render("account", { user });
-  });
+});
   
-  app.post("/api/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
     const { email, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
     try {
       const sql = `INSERT INTO user (email, password) VALUES ('${email}', '${hashed}')`;
-      const [result, _] = await conn.execute(sql);
+      const [result, _] = await Promise.all([db.execute(sql)]);
       const id = result.insertId;
       req.session.auth = true;
       req.session.userId = id;
@@ -173,9 +168,9 @@ app.get("/register", (req, res) => {
       console.error(err);
       return res.status(400).send(err.sqlMessage);
     }
-  });
+});
   
-  app.post("/api/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
     const { email, password } = req.body;
   
     if (!email || !password) {
@@ -183,7 +178,7 @@ app.get("/register", (req, res) => {
     }
   
     const sql = `SELECT id, password FROM user WHERE email = '${email}'`;
-    const [results, cols] = await conn.execute(sql);
+    const [results, cols] = await Promise.all([db.execute(sql)]);
   
     const user = results[0];
   
@@ -203,7 +198,7 @@ app.get("/register", (req, res) => {
     req.session.userId = id;
   
     return res.redirect("/account");
-  });
+});
   
 
 app.listen(8080, () => {
